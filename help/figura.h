@@ -10,15 +10,20 @@ class Figuras
 {
 private:
     int arrayfiguras[TAMANY_MES_GRAN];
+    int lenghLine;
     int color;
     int figura;
-    int tamany; 
+    int tamany;
 public:
     Figuras(int tipusFigura, int colorDesitjat);
     ~Figuras();
     void trasposarMatriu();
     void girHorari();
     void antiHorari();
+    void trasposarFiguraLinea();
+    void intercambiaFiles();
+    void intercambiaColumnes();
+    void inicialitzaArray() { for (int i = 0; i < TAMANY_MES_GRAN; i++) { arrayfiguras[i] = 0; } };
     int getTamany() const { return tamany; }
     void getArray(int* array) { for (int i = 0; i < tamany; i++) { array[i] = arrayfiguras[i]; } };
 };

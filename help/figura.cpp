@@ -9,7 +9,7 @@ Figuras::Figuras(int tipusFigura, int colorDesitjat)
     // borrar
     // inicializar array
 
-    arrayToFiguire(tipusFigura, arrayfiguras, tamany, color);
+    arrayToFiguire(tipusFigura, arrayfiguras, tamany, color, lenghLine);
 }
 
 Figuras::~Figuras()
@@ -42,74 +42,118 @@ ostream& operator<<(ostream &out, Figuras figuraAmostra)
 
 void Figuras::trasposarMatriu()
 {
-    if (tamany!=4)
+    int *copy = new int[tamany];
+    int ELEMENTS_LINEARS;
+    switch (tamany)
     {
-        int *copy = new int[tamany];
-        int ELEMENTS_LINEARS;
-        switch (tamany)
-        {
-        case FIGURA_I_TAMANY:
-            ELEMENTS_LINEARS = 4;
-            break;
-        case FIGURA_O_TAMANY:
-            ELEMENTS_LINEARS = 2;
-            break;
-        case FIGURA_OTHERS_TAMANY:
-            ELEMENTS_LINEARS = 3;
-            break;
+    case FIGURA_I_TAMANY:
+        ELEMENTS_LINEARS = 4;
+        break;
+    case FIGURA_O_TAMANY:
+        ELEMENTS_LINEARS = 2;
+        break;
+    case FIGURA_OTHERS_TAMANY:
+        ELEMENTS_LINEARS = 3;
+        break;
 
-        default:
-            break;
-        }
-        int pos = 0;
-        for (int colum = 0; colum < ELEMENTS_LINEARS; colum++)
+    default:
+        break;
+    }
+    int pos = 0;
+    for (int colum = 0; colum < ELEMENTS_LINEARS; colum++)
+    {
+        // hem vist que podem descriure la trapostas a base d'aquesta  formula
+        for (int element = 0; element <= colum + ELEMENTS_LINEARS * 2; element += 3)
         {
-            // hem vist que podem descriure la trapostas a base d'aquesta  formula
-            for (int element = 0; element <= colum + ELEMENTS_LINEARS * 2; element += 3)
-            {
-                copy[pos] = arrayfiguras[colum + element];
-                pos++;
-            }
+            copy[pos] = arrayfiguras[colum + element];
+            pos++;
         }
-        for (int i = 0; i < pos; i++)
-            arrayfiguras[i] = copy[i];
-        delete copy;
-    }     
+    }
+    for (int i = 0; i < pos; i++)
+        arrayfiguras[i] = copy[i];
+    delete copy;     
 }
 
-void Figuras::girHorari()
+
+
+void Figuras::trasposarFiguraLinea()
 {
-    trasposarMatriu();
+    if (arrayfiguras[2] == color)
+    {
+        arrayfiguras[2] = 0;
+        arrayfiguras[10] = 0;
+        arrayfiguras[14] = 0;
+        arrayfiguras[4] = color;
+        arrayfiguras[5] = color;
+        arrayfiguras[7] = color;
+    }
+    else
+    {
+        arrayfiguras[2] = color;
+        arrayfiguras[10] = color;
+        arrayfiguras[14] = color;
+        arrayfiguras[4] = 0;
+        arrayfiguras[5] = 0;
+        arrayfiguras[7] = 0;
+    }
+}
 
+void Figuras::intercambiaFiles()
+{
+    int posFigureArray;
+    const int EndFirstLine = 3;
+    const int StartEndLine = 6;
+    int copy;
+    for (int i = 0; i < EndFirstLine; i++)
+    {
+        copy = arrayfiguras[i];
+        arrayfiguras[i] = arrayfiguras[i + StartEndLine];
+        arrayfiguras[i + StartEndLine] = copy;
+    }
+}
 
+void Figuras::intercambiaColumnes()
+{
+    int posFigureArray;
+    const int FirstColum = 0;
+    const int EndColum = 2;
+    const int EndFirstColum = 6;
+    int copy;
+    for (int i = FirstColum; i <= EndFirstColum; i+=3)
+    {
+        copy = arrayfiguras[i];
+        arrayfiguras[i] = arrayfiguras[i + EndColum];
+        arrayfiguras[i + EndColum] = copy;
+    }
 }
 void Figuras::antiHorari()
 {
     if (tamany == 16)
-    {
-        if (arrayfiguras[2] == color)
-        {
-            arrayfiguras[2]=0;
-            arrayfiguras[10]=0;
-            arrayfiguras[14]=0;
-            arrayfiguras[4]=color;
-            arrayfiguras[5]=color;
-            arrayfiguras[7]=color;
-        }
-        else
-        {
-            arrayfiguras[2]=color;
-            arrayfiguras[10]=color;
-            arrayfiguras[14]=color;
-            arrayfiguras[4]=0;
-            arrayfiguras[5]=0;
-            arrayfiguras[7]=0;
-        }
-    }
+        trasposarFiguraLinea();
     else
     {
-        trasposarMatriu();
-        // faltan cosas
+        if (tamany != 4)
+        {
+            trasposarMatriu();
+            intercambiaFiles();
+            // faltan cosas
+        }
     }
-    
+   
+}
+
+void Figuras::girHorari()
+{
+
+    if (tamany == 16)
+        trasposarFiguraLinea();
+    else
+    {
+        if (tamany != 4)
+        {
+            trasposarMatriu();
+            intercambiaColumnes();
+            // faltan cosas
+        }
+    }
 }

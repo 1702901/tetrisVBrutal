@@ -78,7 +78,7 @@ void bynaryToFigure(bool* num, int* array, const int color)
 
 // Anexo 2
 
-int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color)
+int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color, int& lenghLine)
 { 
     tamany = 0;
     switch (tipusFigura)
@@ -87,6 +87,7 @@ int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color)
         for (int i = 0; i < FIGURA_O_TAMANY; i++)
             array[i] = color;
         tamany=4;
+        lenghLine = 2;
         break;
     case FIGURA_I:
         tamany = 16;
@@ -96,12 +97,14 @@ int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color)
         array[6] = color; 
         array[10] = color; 
         array[14] = color; 
+        lenghLine = 4;
         break;
     default:
         // Quitar if else cuando se este en una etapa mas avanzada y solo dejar
-        // lo que esta dentro del if ya que solo habra ese tipo de figura y no se pasaran figuras erroneas 
+        // lo que esta dentro del if ya que solo habra ese tipo de figura y no se pasaran figuras erronea
         if (tipusFigura > FIGURA_I && tipusFigura < NO_FIGURA)
         {
+            lenghLine = 3;
             tamany = 9;
             const int todo0Inicio = 6;
             for (int i = todo0Inicio; i < tamany; i++)
