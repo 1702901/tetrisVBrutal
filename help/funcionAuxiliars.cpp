@@ -76,7 +76,7 @@ void bynaryToFigure(bool* num, int* array, const int color)
     */
 }
 
-// Anexo
+// Anexo 2
 
 int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color)
 { 
@@ -98,6 +98,8 @@ int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color)
         array[14] = color; 
         break;
     default:
+        // Quitar if else cuando se este en una etapa mas avanzada y solo dejar
+        // lo que esta dentro del if ya que solo habra ese tipo de figura y no se pasaran figuras erroneas 
         if (tipusFigura > FIGURA_I && tipusFigura < NO_FIGURA)
         {
             tamany = 9;
