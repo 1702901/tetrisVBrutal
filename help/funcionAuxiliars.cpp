@@ -77,10 +77,8 @@ void bynaryToFigure(bool* num, int* array, const int color)
 }
 
 // Anexo 2
-
-int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color, int& lenghLine)
+void arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color, int& lenghLine)
 { 
-    tamany = 0;
     switch (tipusFigura)
     {
     case FIGURA_O:
@@ -107,6 +105,7 @@ int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color, in
             lenghLine = 3;
             tamany = 9;
             const int todo0Inicio = 6;
+            // La ultima fila siempre termina en 0
             for (int i = todo0Inicio; i < tamany; i++)
                 array[i] = 0;
             bool num[3];
@@ -117,8 +116,6 @@ int arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color, in
             cout << "error no se encontro la figura" << endl;
         break;
     }
-
-    return tamany;
 }
 
 

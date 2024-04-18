@@ -19,22 +19,34 @@
     <Filter Include="Archivos de recursos\figura">
       <UniqueIdentifier>{09a7d9f6-0932-495f-88f3-e050d5d3b73a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de recursos\funcionesDeApoyo">
+      <UniqueIdentifier>{d5eb929a-292e-4d64-ad19-a9dacda3d184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\tauler">
+      <UniqueIdentifier>{c2171cad-5793-4bb1-8f74-19994cf7e038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\joc">
+      <UniqueIdentifier>{e873f527-afc6-4f5d-9ba1-1c75047050e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="funcionAuxiliars.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
     <ClCompile Include="test.cpp">
       <Filter>Archivos de recursos\test</Filter>
     </ClCompile>
     <ClCompile Include="figura.cpp">
       <Filter>Archivos de recursos\figura</Filter>
     </ClCompile>
+    <ClCompile Include="funcionAuxiliars.cpp">
+      <Filter>Archivos de recursos\funcionesDeApoyo</Filter>
+    </ClCompile>
+    <ClCompile Include="Tauler.cpp">
+      <Filter>Archivos de recursos\tauler</Filter>
+    </ClCompile>
+    <ClCompile Include="Joc.cpp">
+      <Filter>Archivos de recursos\joc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="funcionAuxiliar.h">
-      <Filter>Archivos de recursos</Filter>
-    </ClInclude>
     <ClInclude Include="struct.h">
       <Filter>Archivos de recursos</Filter>
     </ClInclude>
@@ -43,6 +55,18 @@
     </ClInclude>
     <ClInclude Include="figura.h">
       <Filter>Archivos de recursos\figura</Filter>
+    </ClInclude>
+    <ClInclude Include="funcionAuxiliar.h">
+      <Filter>Archivos de recursos\funcionesDeApoyo</Filter>
+    </ClInclude>
+    <ClInclude Include="Tauler.h">
+      <Filter>Archivos de recursos\tauler</Filter>
+    </ClInclude>
+    <ClInclude Include="Joc.h">
+      <Filter>Archivos de recursos\joc</Filter>
+    </ClInclude>
+    <ClInclude Include="archiuTest.txt">
+      <Filter>Archivos de recursos\test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

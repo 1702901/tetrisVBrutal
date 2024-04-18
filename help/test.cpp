@@ -1,6 +1,6 @@
 #include "figura.h"
 #include "test.h"
-
+#include "Joc.h"
 
 void mostrarCreacioFigures()
 {
@@ -50,7 +50,10 @@ int main()
     //mostrarCreacioFigures();
     //mostrarGirAntiHorari();
     //mostrarGirHorari();
-    
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza("archiuTest.txt");
 
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.mostrarFigura();
     return 0;
 }

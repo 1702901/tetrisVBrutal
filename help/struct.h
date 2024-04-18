@@ -3,8 +3,13 @@
 
 #include "math.h"
 #include <string>
+#include <fstream>
 #include <iostream>
 using namespace std;
+
+const int COLUMNESATAULER = 8;
+const int FILESTAULER = 8;
+const int DIMENSIONS = 2;
 
 typedef enum
 {
@@ -38,5 +43,11 @@ typedef enum
     COLOR_VERMELL,
     NO_COLOR
 } ColorFigura;
+
+typedef enum
+{
+    GIR_HORARI = 0,
+    GIR_ANTI_HORARI
+} DireccioGir;
 
 #endif

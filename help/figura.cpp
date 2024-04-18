@@ -4,19 +4,28 @@
 
 Figuras::Figuras(int tipusFigura, int colorDesitjat)
 {
-    figura = tipusFigura;
-    color = colorDesitjat;
+    m_figura = tipusFigura;
+    m_color = colorDesitjat;
     // borrar
     // inicializar array
 
-    arrayToFiguire(tipusFigura, arrayfiguras, tamany, color, lenghLine);
+    arrayToFiguire(tipusFigura, m_arrayfiguras, m_tamany, m_color, m_lenghLine);
+}
+void Figuras::cambiaFigura(int tipusFigura)
+{
+    m_figura = tipusFigura;
+    m_color = tipusFigura;
+    // borrar
+    // inicializar array
+
+    arrayToFiguire(tipusFigura, m_arrayfiguras, m_tamany, m_color, m_lenghLine);
 }
 
 Figuras::~Figuras()
 {
 }
 
-ostream& operator<<(ostream &out, Figuras figuraAmostra)
+ostream& operator<<(ostream &out,const Figuras& figuraAmostra)
 {
     int tamanyFigura = figuraAmostra.getTamany();
     int arrayMostar[TAMANY_MES_GRAN];
@@ -42,9 +51,9 @@ ostream& operator<<(ostream &out, Figuras figuraAmostra)
 
 void Figuras::trasposarMatriu()
 {
-    int *copy = new int[tamany];
+    int *copy = new int[m_tamany];
     int ELEMENTS_LINEARS;
-    switch (tamany)
+    switch (m_tamany)
     {
     case FIGURA_I_TAMANY:
         ELEMENTS_LINEARS = 4;
@@ -65,12 +74,12 @@ void Figuras::trasposarMatriu()
         // hem vist que podem descriure la trapostas a base d'aquesta  formula
         for (int element = 0; element <= colum + ELEMENTS_LINEARS * 2; element += 3)
         {
-            copy[pos] = arrayfiguras[colum + element];
+            copy[pos] = m_arrayfiguras[colum + element];
             pos++;
         }
     }
     for (int i = 0; i < pos; i++)
-        arrayfiguras[i] = copy[i];
+        m_arrayfiguras[i] = copy[i];
     delete copy;     
 }
 
@@ -78,23 +87,23 @@ void Figuras::trasposarMatriu()
 
 void Figuras::trasposarFiguraLinea()
 {
-    if (arrayfiguras[2] == color)
+    if (m_arrayfiguras[2] == m_color)
     {
-        arrayfiguras[2] = 0;
-        arrayfiguras[10] = 0;
-        arrayfiguras[14] = 0;
-        arrayfiguras[4] = color;
-        arrayfiguras[5] = color;
-        arrayfiguras[7] = color;
+        m_arrayfiguras[2] = 0;
+        m_arrayfiguras[10] = 0;
+        m_arrayfiguras[14] = 0;
+        m_arrayfiguras[4] = m_color;
+        m_arrayfiguras[5] = m_color;
+        m_arrayfiguras[7] = m_color;
     }
     else
     {
-        arrayfiguras[2] = color;
-        arrayfiguras[10] = color;
-        arrayfiguras[14] = color;
-        arrayfiguras[4] = 0;
-        arrayfiguras[5] = 0;
-        arrayfiguras[7] = 0;
+        m_arrayfiguras[2] = m_color;
+        m_arrayfiguras[10] = m_color;
+        m_arrayfiguras[14] = m_color;
+        m_arrayfiguras[4] = 0;
+        m_arrayfiguras[5] = 0;
+        m_arrayfiguras[7] = 0;
     }
 }
 
@@ -106,9 +115,9 @@ void Figuras::intercambiaFiles()
     int copy;
     for (int i = 0; i < EndFirstLine; i++)
     {
-        copy = arrayfiguras[i];
-        arrayfiguras[i] = arrayfiguras[i + StartEndLine];
-        arrayfiguras[i + StartEndLine] = copy;
+        copy = m_arrayfiguras[i];
+        m_arrayfiguras[i] = m_arrayfiguras[i + StartEndLine];
+        m_arrayfiguras[i + StartEndLine] = copy;
     }
 }
 
@@ -121,18 +130,18 @@ void Figuras::intercambiaColumnes()
     int copy;
     for (int i = FirstColum; i <= EndFirstColum; i+=3)
     {
-        copy = arrayfiguras[i];
-        arrayfiguras[i] = arrayfiguras[i + EndColum];
-        arrayfiguras[i + EndColum] = copy;
+        copy = m_arrayfiguras[i];
+        m_arrayfiguras[i] = m_arrayfiguras[i + EndColum];
+        m_arrayfiguras[i + EndColum] = copy;
     }
 }
 void Figuras::antiHorari()
 {
-    if (tamany == 16)
+    if (m_tamany == 16)
         trasposarFiguraLinea();
     else
     {
-        if (tamany != 4)
+        if (m_tamany != 4)
         {
             trasposarMatriu();
             intercambiaFiles();
@@ -145,11 +154,11 @@ void Figuras::antiHorari()
 void Figuras::girHorari()
 {
 
-    if (tamany == 16)
+    if (m_tamany == 16)
         trasposarFiguraLinea();
     else
     {
-        if (tamany != 4)
+        if (m_tamany != 4)
         {
             trasposarMatriu();
             intercambiaColumnes();

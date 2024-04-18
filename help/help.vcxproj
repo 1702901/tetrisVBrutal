@@ -129,11 +129,16 @@
   <ItemGroup>
     <ClCompile Include="figura.cpp" />
     <ClCompile Include="funcionAuxiliars.cpp" />
+    <ClCompile Include="Joc.cpp" />
+    <ClCompile Include="Tauler.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="figura.h" />
     <ClInclude Include="funcionAuxiliar.h" />
+    <ClInclude Include="archiuTest.txt" />
+    <ClInclude Include="Joc.h" />
+    <ClInclude Include="Tauler.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="struct.h" />
   </ItemGroup>
