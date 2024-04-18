@@ -45,15 +45,51 @@ void mostrarGirHorari()
     }
 }
 
+void ferTestLlegirArchiu (const string& nomArchiu)
+{
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza(nomArchiu);
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    nouJocTetris.mostrarFigura();
+}
+
+
+void testPosarFigura(const string& nomArchiu)
+{
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza(nomArchiu);
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    nouJocTetris.mostrarFigura();
+    cout << endl << endl;
+    nouJocTetris.posarFigura();
+    cout << endl << endl;
+    nouJocTetris.mostrarTualer();
+    cout << endl << endl;
+    nouJocTetris.mostrarFigura();
+    cout << endl << endl;
+}
+
+void testEliminarFigura(const string& nomArchiu)
+{
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza(nomArchiu);
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    nouJocTetris.mostrarFigura();
+    cout << endl << endl;
+    nouJocTetris.borrarFigura();
+    cout << endl << endl;
+    nouJocTetris.mostrarTualer();
+    cout << endl << endl;
+}
 int main() 
 {
     //mostrarCreacioFigures();
     //mostrarGirAntiHorari();
     //mostrarGirHorari();
-    Joc nouJocTetris;
-    nouJocTetris.inicialitza("archiuTest.txt");
-
-    nouJocTetris.mostrarTualer();
-    nouJocTetris.mostrarFigura();
+    //ferTestLlegirArchiu("archiuTest.txt");
+    testPosarFigura("archiuTest.txt");
     return 0;
 }

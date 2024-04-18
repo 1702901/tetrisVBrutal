@@ -31,6 +31,7 @@ typedef enum
     NO_FIGURA
 } TipusFigura;
 
+// Color negre = posicio vuida
 typedef enum
 {
     COLOR_NEGRE = 0,

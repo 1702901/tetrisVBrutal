@@ -14,7 +14,7 @@ Figuras::Figuras(int tipusFigura, int colorDesitjat)
 void Figuras::cambiaFigura(int tipusFigura)
 {
     m_figura = tipusFigura;
-    m_color = tipusFigura;
+    m_color = tipusFigura + 1 ;
     // borrar
     // inicializar array
 
@@ -51,6 +51,7 @@ ostream& operator<<(ostream &out,const Figuras& figuraAmostra)
 
 void Figuras::trasposarMatriu()
 {
+    // Anexo 3
     int *copy = new int[m_tamany];
     int ELEMENTS_LINEARS;
     switch (m_tamany)
