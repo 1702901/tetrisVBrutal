@@ -163,7 +163,6 @@ void Figuras::girHorari()
         {
             trasposarMatriu();
             intercambiaColumnes();
-            // faltan cosas
         }
     }
 }

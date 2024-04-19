@@ -91,10 +91,10 @@ void arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color, i
         tamany = 16;
         for (int i = 0; i < tamany; i++)
             array[i] = 0;
-        array[2] = color; 
+        array[4] = color; 
+        array[5] = color; 
         array[6] = color; 
-        array[10] = color; 
-        array[14] = color; 
+        array[7] = color; 
         lenghLine = 4;
         break;
     default:

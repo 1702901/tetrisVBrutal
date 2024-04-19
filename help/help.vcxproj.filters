@@ -45,6 +45,9 @@
     <ClCompile Include="Joc.cpp">
       <Filter>Archivos de recursos\joc</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struct.h">
@@ -64,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="Joc.h">
       <Filter>Archivos de recursos\joc</Filter>
-    </ClInclude>
-    <ClInclude Include="archiuTest.txt">
-      <Filter>Archivos de recursos\test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

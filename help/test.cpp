@@ -84,12 +84,71 @@ void testEliminarFigura(const string& nomArchiu)
     nouJocTetris.mostrarTualer();
     cout << endl << endl;
 }
+
+void testGirarFigura(const string& nomArchiu)
+{
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza(nomArchiu);
+    nouJocTetris.mostrarTualer();
+    cout << endl << endl;
+    nouJocTetris.mouFigura(-1);
+    cout << endl << endl;
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    nouJocTetris.giraFigura(GIR_ANTI_HORARI);
+    cout << endl << endl;
+    nouJocTetris.mostrarTualer();
+}
+
+
+// Falta fer test d'aixo
+//bool mouFigura(int dirX);
+//int baixaFigura();
+//int eliminarLineasCompletesBaixada();
+// 
+// 
+
+
+void escriuTaulerTest(const string& nomFitxerLlegir ,const string& nomFitxerEscriure) 
+{
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza(nomFitxerLlegir);
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    nouJocTetris.escriuTauler(nomFitxerEscriure);
+}
+
+void baixaFigura(const string& nomFitxerLlegir)
+{
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza(nomFitxerLlegir);
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+}
+
+void mouFigura(const string& nomFitxerLlegir)
+{
+    Joc nouJocTetris;
+    nouJocTetris.inicialitza(nomFitxerLlegir);
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.mouFigura(-1);
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+}
+/*
 int main() 
 {
     //mostrarCreacioFigures();
     //mostrarGirAntiHorari();
     //mostrarGirHorari();
-    //ferTestLlegirArchiu("archiuTest.txt");
-    testPosarFigura("archiuTest.txt");
+    //escriuTaulerTest("testPosarFigura.txt", "archiuBuit.txt");
+    //testEliminarFigura("testPosarFigura.txt");
+    testGirarFigura("testPosarFigura.txt");
+    //mouFigura("testPosarFigura.txt");
     return 0;
 }
+*/

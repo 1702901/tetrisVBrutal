@@ -35,9 +35,8 @@ public:
     int getX() const { return m_punt[0]; }
     int getY() const{ return m_punt[1]; }
     int getColor() const { return m_color; };
-    int getValuePos(const int posX, const int posY) { return m_arrayfiguras[posX+posY*3]; };
-
-
+    int getValuePos(const int posX, const int posY) { return m_arrayfiguras[posX + posY * m_lenghLine]; };
+    int getTipusFigura() const { return m_figura; }
 
 };
 
