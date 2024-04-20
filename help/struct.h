@@ -10,9 +10,10 @@ using namespace std;
 const int COLUMNESATAULER = 8;
 const int FILESTAULER = 8;
 const int DIMENSIONS = 2;
-const int MAX_GIRS = 3;
 const int MAX_FILA = 8;
 const int MAX_COL = 8;
+const int MAX_GIRS = 3;
+
 
 typedef enum
 {

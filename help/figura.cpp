@@ -1,4 +1,4 @@
-#include "figura.h"
+#include "Figura.h"
 
 #define TAMANY_ESTANDARD 9
 
@@ -9,7 +9,7 @@ Figuras::Figuras(int tipusFigura, int colorDesitjat)
     // borrar
     // inicializar array
 
-    arrayToFiguire(tipusFigura, m_arrayfiguras, m_tamany, m_color, m_lenghLine);
+    arrayToFigure(tipusFigura, m_arrayfiguras, m_tamany, m_color, m_lenghLine);
 }
 void Figuras::cambiaFigura(int tipusFigura)
 {
@@ -18,7 +18,7 @@ void Figuras::cambiaFigura(int tipusFigura)
     // borrar
     // inicializar array
 
-    arrayToFiguire(tipusFigura, m_arrayfiguras, m_tamany, m_color, m_lenghLine);
+    arrayToFigure(tipusFigura, m_arrayfiguras, m_tamany, m_color, m_lenghLine);
 }
 
 Figuras::~Figuras()

@@ -1,7 +1,6 @@
 #ifndef TAULER_H
 #define TAULER_H
-#include "figura.h"
-#include "test.h"
+#include "Figura.h"
 class Tauler
 {
 private:
@@ -9,7 +8,7 @@ private:
 	int ordreGirs;
 public:
 	void setPosition(const int posX, const int posY, const ColorFigura valueColor) { taulerJoc[posX][posY] = valueColor; };
-	int getPosition(const int posX, const int posY) const { return int(taulerJoc[posY][posX]) ; };
+    int getPosition(const int posX, const int posY) const { return int(taulerJoc[posY][posX]) ; };
 };
 
 ostream& operator<<(ostream& out, const Tauler& partida);

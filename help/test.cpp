@@ -133,9 +133,34 @@ void mouFigura(const string& nomFitxerLlegir)
 {
     Joc nouJocTetris;
     nouJocTetris.inicialitza(nomFitxerLlegir);
-    nouJocTetris.mostrarTualer();
-    nouJocTetris.mouFigura(-1);
+
+    nouJocTetris.mostrarFigura();
     cout << endl;
+
+    nouJocTetris.mostrarTualer();
+
+    nouJocTetris.mouFigura(1);
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    nouJocTetris.baixaFigura();
+
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.baixaFigura();
+
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.baixaFigura();
+
+    nouJocTetris.mostrarTualer();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.baixaFigura();
+
     nouJocTetris.mostrarTualer();
     cout << endl;
 }
@@ -147,8 +172,8 @@ int main()
     //mostrarGirHorari();
     //escriuTaulerTest("testPosarFigura.txt", "archiuBuit.txt");
     //testEliminarFigura("testPosarFigura.txt");
-    testGirarFigura("testPosarFigura.txt");
-    //mouFigura("testPosarFigura.txt");
+    //testGirarFigura("testPosarFigura.txt");
+    mouFigura("testPosarFigura.txt");
     return 0;
 }
 */

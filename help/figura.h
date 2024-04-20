@@ -2,7 +2,7 @@
 #define FIGURA_H
 
 #include "struct.h"
-#include "D:\Uni\Metdologia de la programacion\tetris\funcionAuxiliar.h"
+#include "funcionAuxiliar.h"
 #define TAMANY_ESTANDARD 9
 #define TAMANY_MES_GRAN 16
 

@@ -6,48 +6,46 @@ int posCentroAEsquina(int pos,const int tamany, bool esX, int cuantitatDeGirs)
 	switch (tamany)
 	{
 	case 9:
+	case 4:
 		pos -= 1;
 		break;
 	case 16:
 		if (esX)
 		{
 			switch (cuantitatDeGirs)
-			{
-			case 0:
-				pos -= 2;
-				break;
-			case 1:
-				pos -= 2;
-				break;
-			case 2:
-				pos -= 1;
-				break;
-			case 3:
-				pos -= 2;
-				break;
-			default:
-				break;
-			}
+            {
+            case 0:
+            	pos -= 1;
+            	break;
+            case 2:
+            	pos -= 1;
+            	break;
+            case 3:
+            	pos -= 2;
+            	break;
+            default:
+            	break;
+            }
 		}
 		else
 		{
 			switch (cuantitatDeGirs)
-			{
-			case 0:
-				pos -= 1;
-				break;
-			case 1:
-				pos -= 2;
-				break;
-			case 2:
-				pos -= 1;
-				break;
-			case 3:
-				pos -= 1;
-				break;
-			default:
-				break;
-			}
+            {
+            case 0:
+            	pos -= 1;
+            	break;
+            case 1:
+            	pos -= 1;
+            	break;
+            case 2:
+            	pos -= 1;
+            	break;
+            case 3:
+            	pos -= 1;
+            	break;
+            default:
+            	break;
+            }
 		}
 		break;
 	default:
@@ -99,7 +97,7 @@ void Joc::inicialitza(const string& nomFitxer)
 		{
 			posarFigura();
 		}
-		cout << m_figura.getX() << endl;
+		
 
 	}
 	else
@@ -146,6 +144,7 @@ void Joc::posarFigura()
 
 bool Joc::mirarSiHaColisionsFigura()
 {
+    
 	bool colisio = false;
 	int fila = m_figura.getX(), columna = m_figura.getY();
 	ColorFigura colorDeLaPos;
@@ -154,10 +153,18 @@ bool Joc::mirarSiHaColisionsFigura()
 		while (!colisio && columna < m_figura.getY() + m_figura.getLenghLine())
 		{
 			colorDeLaPos = ColorFigura(m_figura.getValuePos(fila - m_figura.getX(), columna - m_figura.getY()));
-			if ((colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != COLOR_NEGRE ) || 
-				((columna > COLUMNESATAULER || fila > FILESTAULER) &&  colorDeLaPos != COLOR_NEGRE) || 
-				((columna < 0 || fila < 0) && colorDeLaPos != COLOR_NEGRE) )
-				colisio = true;
+			if (colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != COLOR_NEGRE) 
+	            colisio = true;
+            else
+            {
+            	if ( (columna >= COLUMNESATAULER || fila >= FILESTAULER) && colorDeLaPos != COLOR_NEGRE)
+            		colisio = true;
+            	else
+            	{
+            		if ( (columna < 0 || fila < 0) && colorDeLaPos != COLOR_NEGRE)
+            			colisio = true;
+            	}
+            }
 			columna++;
 		}
 		fila++;
@@ -172,7 +179,7 @@ void Joc::desGirarRecta(DireccioGir direccio)
 	{
 	case 0:
 		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setY(m_figura.getY() + 1);
+			m_figura.setX(m_figura.getX() - 1);
 		else
 			m_figura.setX(m_figura.getX() + 1);
 		break;
@@ -191,7 +198,10 @@ void Joc::desGirarRecta(DireccioGir direccio)
 		break;
 	case 3:
 		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setX(m_figura.getX() - 1);
+		{
+	       m_figura.setY(m_figura.getY() - 1);
+	       m_figura.setX(m_figura.getX() + 1);
+        }
 		else
 			m_figura.setY(m_figura.getY() + 1);
 		break;
@@ -209,7 +219,7 @@ void Joc::girarRecta(DireccioGir direccio)
 	{
 	case 0:
 		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setY(m_figura.getY() - 1);
+			m_figura.setX(m_figura.getX() + 1);
 		else
 			m_figura.setX(m_figura.getX() - 1);
 		break;
@@ -228,7 +238,10 @@ void Joc::girarRecta(DireccioGir direccio)
 		break;
 	case 3:
 		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setX(m_figura.getX() + 1);
+	    {
+	       m_figura.setY(m_figura.getY() + 1);
+	       m_figura.setX(m_figura.getX() - 1);
+        }
 		else
 			m_figura.setY(m_figura.getY() - 1);
 		break;
@@ -300,24 +313,30 @@ bool Joc::mouFigura(int dirX)
 	return !colisions;
 }
 
+
 int Joc::eliminarLineasCompletesBaixada()
 {
 	bool lineCompleta;
 	int columna, fila;
 	int filesEliminades = 0;
+	int maxValueLine = m_figura.getY() + m_figura.getLenghLine();
 	// Como valor mas bajo solo comprovamos la linea 0
 	// El caso es que hay figuras que su array puede salir, pero no la figura en si
 	// Por tanto de ahi la existencia de este if
-	fila = m_figura.getY() - m_figura.getLenghLine();
+	fila = m_figura.getY();
 	if (fila < 0)
 		fila = 0;
-	for(fila;fila < m_figura.getY(); fila++)
+	if (maxValueLine >= MAX_COL)
+	{
+		maxValueLine = MAX_COL - 1;
+	}
+	for(fila;fila <= maxValueLine; fila++)
 	{
 		lineCompleta = true;
 		columna = 0;
-		while (lineCompleta && columna < COLUMNESATAULER)
+		while (lineCompleta && columna <= COLUMNESATAULER - 1)
 		{
-			if (m_tauler.getPosition(columna, fila) == COLOR_NEGRE )
+			if (m_tauler.getPosition(fila, columna) == COLOR_NEGRE )
 				lineCompleta = false;
 			columna++;
 		}
@@ -329,11 +348,11 @@ int Joc::eliminarLineasCompletesBaixada()
 			for (int filaEliminar = fila; filaEliminar > 0; filaEliminar--)
 			{
 				for (int columnasEliminar = 0; columnasEliminar < COLUMNESATAULER; columnasEliminar++)
-					m_tauler.setPosition(columnasEliminar, filaEliminar, ColorFigura(m_tauler.getPosition(columnasEliminar, filaEliminar - 1)));
+					m_tauler.setPosition(columnasEliminar, filaEliminar, ColorFigura(m_tauler.getPosition(filaEliminar - 1, columnasEliminar)));
 			}
 			// Posem la linea superior en negra 
 			for (int columnasEliminar = 0; columnasEliminar < COLUMNESATAULER; columnasEliminar++)
-				m_tauler.setPosition(columnasEliminar, 0, COLOR_NEGRE);
+				m_tauler.setPosition(columnasEliminar,0 , COLOR_NEGRE);
 			filesEliminades++;
 			// ho sento pero ho he de fer per poder fer curt l'algorisme ja que al elminar em de baixar el punter un -1
 			fila--;
@@ -362,7 +381,7 @@ int Joc::baixaFigura()
 	else
 		posarFigura();
 	// entenem segons els nostres companys que sempre hem de posar la figura, sino es el cas eliminar
-	// aquesta ´linea
+	// aquesta Â´linea
 	return filesEliminades;
 }
 

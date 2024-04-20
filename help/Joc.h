@@ -1,7 +1,6 @@
 #ifndef JOC_H
 #define JOC_H
-#include "figura.h"
-#include "test.h"
+#include "Figura.h"
 #include "Tauler.h"
 class Joc
 {
@@ -25,7 +24,6 @@ public:
 	void girarRecta(DireccioGir direccio);
 	void desGirarRecta(DireccioGir direccio);
 };
-
 
 
 

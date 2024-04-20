@@ -77,7 +77,7 @@ void bynaryToFigure(bool* num, int* array, const int color)
 }
 
 // Anexo 2
-void arrayToFiguire(int tipusFigura, int array[],int& tamany, const int color, int& lenghLine)
+void arrayToFigure(int tipusFigura, int array[],int& tamany, const int color, int& lenghLine)
 { 
     switch (tipusFigura)
     {
