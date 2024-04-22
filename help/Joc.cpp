@@ -73,12 +73,9 @@ void Joc::inicialitza(const string& nomFitxer)
 		m_figura.setY(posCentroAEsquina(posY, m_figura.getTamany(), false, cuantitatDeGirsHoraris));
 		m_figura.setX(posCentroAEsquina(posX, m_figura.getTamany(), true, cuantitatDeGirsHoraris));
 		m_cuantitatGirs = cuantitatDeGirsHoraris;
-		cout << m_figura << endl;
 		for (int i = 0; i < cuantitatDeGirsHoraris; i++)
 		{
 			m_figura.girHorari();
-			cout << m_figura << endl;
-
 		}
 		for (int y = 0; y < COLUMNESATAULER; y++)
 		{
@@ -173,85 +170,6 @@ bool Joc::mirarSiHaColisionsFigura()
 	return colisio;
 }
 
-void Joc::desGirarRecta(DireccioGir direccio)
-{
-	switch (m_cuantitatGirs)
-	{
-	case 0:
-		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setX(m_figura.getX() - 1);
-		else
-			m_figura.setX(m_figura.getX() + 1);
-		break;
-	case 1:
-		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setX(m_figura.getX() + 1);
-		else
-			m_figura.setY(m_figura.getY() - 1);
-
-		break;
-	case 2:
-		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setY(m_figura.getY() - 1);
-		else
-			m_figura.setX(m_figura.getX() - 1);
-		break;
-	case 3:
-		if (direccio == GIR_ANTI_HORARI)
-		{
-	       m_figura.setY(m_figura.getY() - 1);
-	       m_figura.setX(m_figura.getX() + 1);
-        }
-		else
-			m_figura.setY(m_figura.getY() + 1);
-		break;
-	default:
-		cout << endl << "ERRRRROOORRRRR, la variable m_cuantitatGirs es mes gran del degur " << endl;
-		break;
-	}
-	
-}
-
-void Joc::girarRecta(DireccioGir direccio)
-{
-	
-	switch (m_cuantitatGirs)
-	{
-	case 0:
-		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setX(m_figura.getX() + 1);
-		else
-			m_figura.setX(m_figura.getX() - 1);
-		break;
-	case 1:
-		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setX(m_figura.getX() - 1);
-		else
-			m_figura.setY(m_figura.getY() + 1);
-
-		break;
-	case 2:
-		if (direccio == GIR_ANTI_HORARI)
-			m_figura.setY(m_figura.getY() + 1);
-		else
-			m_figura.setX(m_figura.getX() + 1);
-		break;
-	case 3:
-		if (direccio == GIR_ANTI_HORARI)
-	    {
-	       m_figura.setY(m_figura.getY() + 1);
-	       m_figura.setX(m_figura.getX() - 1);
-        }
-		else
-			m_figura.setY(m_figura.getY() - 1);
-		break;
-	default:
-		cout << endl << "ERRRRROOORRRRR, la variable m_cuantitatGirs es mes gran del degur " << endl;
-		break;
-	}
-}
-
-
 bool Joc::giraFigura(DireccioGir direccio)
 {
 	// presuposem que hem posat un codi al inici de crear la figura
@@ -263,15 +181,10 @@ bool Joc::giraFigura(DireccioGir direccio)
 		m_figura.girHorari();
 	else
 		m_figura.antiHorari();
-	if (m_figura.getTamany() == 16)
-		girarRecta(direccio);
-
 	colisions = mirarSiHaColisionsFigura();
 	// Refer figura en el mapa en cas de haber colisio
 	if (colisions)
 	{
-		if (m_figura.getTamany() == 16)
-			desGirarRecta(direccio);
 		if (direccio == GIR_HORARI)
 			m_figura.antiHorari();			
 		else

@@ -98,6 +98,45 @@ void testGirarFigura(const string& nomArchiu)
     nouJocTetris.giraFigura(GIR_ANTI_HORARI);
     cout << endl << endl;
     nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.giraFigura(GIR_HORARI);
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mouFigura(1);
+    nouJocTetris.giraFigura(GIR_ANTI_HORARI);
+
+    nouJocTetris.baixaFigura();
+    nouJocTetris.mouFigura(1);
+
+    nouJocTetris.mostrarTualer();
+
+    cout << endl;
+    cout << endl;
+
 }
 
 
@@ -160,20 +199,36 @@ void mouFigura(const string& nomFitxerLlegir)
     cout << endl;
     cout << endl;
     nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+
+    nouJocTetris.mostrarTualer();
+    nouJocTetris.baixaFigura();
+    cout << endl;
+    cout << endl;
+    nouJocTetris.mostrarTualer();
 
     nouJocTetris.mostrarTualer();
     cout << endl;
 }
 /*
-int main() 
+int main()
 {
     //mostrarCreacioFigures();
     //mostrarGirAntiHorari();
-    //mostrarGirHorari();
+    mostrarGirHorari();
     //escriuTaulerTest("testPosarFigura.txt", "archiuBuit.txt");
     //testEliminarFigura("testPosarFigura.txt");
     //testGirarFigura("testPosarFigura.txt");
-    mouFigura("testPosarFigura.txt");
+    //mouFigura("testPosarFigura.txt");
     return 0;
 }
 */
