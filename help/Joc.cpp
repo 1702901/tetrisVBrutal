@@ -15,9 +15,7 @@ int posCentroAEsquina(int pos,const int tamany, bool esX, int cuantitatDeGirs)
 			switch (cuantitatDeGirs)
             {
             case 0:
-            	pos -= 1;
-            	break;
-            case 2:
+			case 2:
             	pos -= 1;
             	break;
             case 3:
@@ -29,23 +27,7 @@ int posCentroAEsquina(int pos,const int tamany, bool esX, int cuantitatDeGirs)
 		}
 		else
 		{
-			switch (cuantitatDeGirs)
-            {
-            case 0:
-            	pos -= 1;
-            	break;
-            case 1:
-            	pos -= 1;
-            	break;
-            case 2:
-            	pos -= 1;
-            	break;
-            case 3:
-            	pos -= 1;
-            	break;
-            default:
-            	break;
-            }
+			pos -= 1;
 		}
 		break;
 	default:
