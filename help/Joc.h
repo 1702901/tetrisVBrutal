@@ -25,6 +25,4 @@ public:
 	void desGirarRecta(DireccioGir direccio);
 };
 
-
-
 #endif
