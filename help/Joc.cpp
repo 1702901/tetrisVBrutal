@@ -26,9 +26,7 @@ int posCentroAEsquina(int pos,const int tamany, bool esX, int cuantitatDeGirs)
             }
 		}
 		else
-		{
 			pos -= 1;
-		}
 		break;
 	default:
 	
@@ -56,9 +54,7 @@ void Joc::inicialitza(const string& nomFitxer)
 		m_figura.setX(posCentroAEsquina(posX, m_figura.getTamany(), true, cuantitatDeGirsHoraris));
 		m_cuantitatGirs = cuantitatDeGirsHoraris;
 		for (int i = 0; i < cuantitatDeGirsHoraris; i++)
-		{
 			m_figura.girHorari();
-		}
 		for (int y = 0; y < COLUMNESATAULER; y++)
 		{
 			for (int x = 0; x < FILESTAULER; x++)
@@ -69,15 +65,9 @@ void Joc::inicialitza(const string& nomFitxer)
 			}
 		}
 		if (mirarSiHaColisionsFigura())
-		{
 			cout << "Has perdut la partida" << endl;
-		}
 		else
-		{
 			posarFigura();
-		}
-		
-
 	}
 	else
 		cout << "Error al obrir l'arxiu";
@@ -222,9 +212,7 @@ int Joc::eliminarLineasCompletesBaixada()
 	if (fila < 0)
 		fila = 0;
 	if (maxValueLine >= MAX_COL)
-	{
 		maxValueLine = MAX_COL - 1;
-	}
 	for(fila;fila <= maxValueLine; fila++)
 	{
 		lineCompleta = true;
