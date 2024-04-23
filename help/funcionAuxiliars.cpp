@@ -65,15 +65,6 @@ void bynaryToFigure(bool* num, int* array, const int color)
             array[5] = color;
         }
     }
-    /*
-    bool saveRepetedValue = num[0] && num[2];
-    array[0] = (!num[1] || saveRepetedValue) * color;
-    array[1] = ((!num[2] && num[1])||saveRepetedValue)*color;
-    array[2] = ((!num[0] && num[2]) || (num[0] && num[1])) * color;
-    array[3] = (!num[2]|| num[1]) * color;
-    array[4] = color;
-    array[5] = (!num[0]|| !num[1])*color;
-    */
 }
 
 // Anexo 2
@@ -117,7 +108,6 @@ void arrayToFigure(int tipusFigura, int array[],int& tamany, const int color, in
         break;
     }
 }
-
 
 // explicacion en 
 
