@@ -1,43 +1,35 @@
 #include "Joc.h"
 
-int posCentroAEsquina(int pos,const int tamany, bool esX, int cuantitatDeGirs)
+int posCentroAEsquinaY(int pos)
 {
-	
-	switch (tamany)
+	pos -= 1;
+	return pos;
+}
+
+int posCentroAEsquinaX(int pos, const int tamany, int cuantitatDeGirs)
+{
+	if (tamany == 16)
 	{
-	case 9:
-	case 4:
-		pos -= 1;
-		break;
-	case 16:
-		if (esX)
+		switch (cuantitatDeGirs)
 		{
-			switch (cuantitatDeGirs)
-            {
-            case 0:
-			case 2:
-            	pos -= 1;
-            	break;
-            case 3:
-            	pos -= 2;
-            	break;
-            default:
-            	break;
-            }
-		}
-		else
+		case 0:
+		case 2:
 			pos -= 1;
-		break;
-	default:
-	
-		break;
+			break;
+		case 3:
+			pos -= 2;
+			break;
+		default:
+			break;
+		}
 	}
+	else
+		pos -= 1;
 	return pos;
 }
 
 void Joc::inicialitza(const string& nomFitxer)
 {
-	m_cuantitatGirs = 0;
 	ifstream fitxer;
 	ColorFigura color;
 	int value;
@@ -50,9 +42,8 @@ void Joc::inicialitza(const string& nomFitxer)
 		m_figura.cambiaFigura(tipusFigura - 1);
 		// Cal tenir en compte que pensem que la esquina de tots es a la pos +1 +1 de la esquina excepte 
 		// el cuadrat, sino es asi, si haura de cambiar la funcio posCentroAEsquina
-		m_figura.setY(posCentroAEsquina(posY, m_figura.getTamany(), false, cuantitatDeGirsHoraris));
-		m_figura.setX(posCentroAEsquina(posX, m_figura.getTamany(), true, cuantitatDeGirsHoraris));
-		m_cuantitatGirs = cuantitatDeGirsHoraris;
+		m_figura.setY(posCentroAEsquinaY(posY));
+		m_figura.setX(posCentroAEsquinaX(posX, m_figura.getTamany(), cuantitatDeGirsHoraris));
 		for (int i = 0; i < cuantitatDeGirsHoraris; i++)
 			m_figura.girHorari();
 		for (int y = 0; y < COLUMNESATAULER; y++)
@@ -161,22 +152,6 @@ bool Joc::giraFigura(DireccioGir direccio)
 			m_figura.antiHorari();			
 		else
 			m_figura.girHorari();
-	}
-	// per guardar cuantitat de girs unicament per el cas del palet
-	else
-	{
-		if (direccio == GIR_HORARI)
-		{
-			m_cuantitatGirs++;
-			if (m_cuantitatGirs > MAX_GIRS)
-				m_cuantitatGirs = 0;
-		}
-		else
-		{
-			m_cuantitatGirs--;
-			if (m_cuantitatGirs < 0)
-				m_cuantitatGirs = 3;
-		}
 	}
 	// Posar la figura cuan sabem que es pot girar
 	posarFigura();
@@ -296,6 +271,5 @@ void Joc::escriuTauler(const string& nomFitxer)
 
 void Joc::inicialitzaFigura(const int tipusFiguraNova)
 {
-	m_cuantitatGirs = 0;
 	m_figura.cambiaFigura(tipusFiguraNova);
 }

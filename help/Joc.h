@@ -7,7 +7,6 @@ class Joc
 private:
 	Tauler m_tauler;
 	Figuras m_figura;
-	int m_cuantitatGirs;
 public:
 	void inicialitza(const string& nomFitxer);
 	void mostrarTualer();
