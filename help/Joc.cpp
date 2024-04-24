@@ -181,13 +181,13 @@ int Joc::eliminarLineasCompletesBaixada()
 	fila = m_figura.getY();
 	if (fila < 0)
 		fila = 0;
-	if (maxValueLine >= MAX_COL)
-		maxValueLine = MAX_COL - 1;
-	for(fila;fila <= maxValueLine; fila++)
+	if (maxValueLine > MAX_COL)
+		maxValueLine = MAX_COL;
+	for(fila;fila < maxValueLine; fila++)
 	{
 		lineCompleta = true;
 		columna = 0;
-		while (lineCompleta && columna <= COLUMNESATAULER - 1)
+		while (lineCompleta && columna < COLUMNESATAULER )
 		{
 			if (m_tauler.getPosition(fila, columna) == COLOR_NEGRE )
 				lineCompleta = false;
@@ -201,6 +201,7 @@ int Joc::eliminarLineasCompletesBaixada()
 			for (int filaEliminar = fila; filaEliminar > 0; filaEliminar--)
 			{
 				for (int columnasEliminar = 0; columnasEliminar < COLUMNESATAULER; columnasEliminar++)
+					// filaEliminar - 1 per cargar el valor de la fila de sobre
 					m_tauler.setPosition(columnasEliminar, filaEliminar, ColorFigura(m_tauler.getPosition(filaEliminar - 1, columnasEliminar)));
 			}
 			// Posem la linea superior en negra 
