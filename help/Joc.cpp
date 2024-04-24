@@ -10,17 +10,12 @@ int posCentroAEsquinaX(int pos, const int tamany, int cuantitatDeGirs)
 {
 	if (tamany == 16)
 	{
-		switch (cuantitatDeGirs)
-		{
-		case 0:
-		case 2:
-			pos -= 1;
-			break;
-		case 3:
+		if (cuantitatDeGirs == 3)
 			pos -= 2;
-			break;
-		default:
-			break;
+		else
+		{
+			if (cuantitatDeGirs != 1)
+				pos -= 1;
 		}
 	}
 	else
