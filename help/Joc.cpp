@@ -209,7 +209,6 @@ int Joc::eliminarLineasCompletesBaixada()
 				m_tauler.setPosition(columnasEliminar,0 , COLOR_NEGRE);
 			filesEliminades++;
 			// ho sento pero ho he de fer per poder fer curt l'algorisme ja que al elminar em de baixar el punter un -1
-			fila--;
 		}
 	}
 	return filesEliminades;
@@ -220,8 +219,7 @@ int Joc::baixaFigura()
 {
 	// Part on es mira si hi ha colisions
 	bool colisions;
-	int filesEliminades = 0;
-	
+	int filesEliminades = 0;	
 	borrarFigura();
 	m_figura.setY(m_figura.getY() + 1);
 	colisions = mirarSiHaColisionsFigura();
