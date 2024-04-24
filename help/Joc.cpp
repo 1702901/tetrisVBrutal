@@ -208,7 +208,6 @@ int Joc::eliminarLineasCompletesBaixada()
 			for (int columnasEliminar = 0; columnasEliminar < COLUMNESATAULER; columnasEliminar++)
 				m_tauler.setPosition(columnasEliminar,0 , COLOR_NEGRE);
 			filesEliminades++;
-			// ho sento pero ho he de fer per poder fer curt l'algorisme ja que al elminar em de baixar el punter un -1
 		}
 	}
 	return filesEliminades;
