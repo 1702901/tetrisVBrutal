@@ -20,8 +20,6 @@ public:
 	int eliminarLineasCompletesBaixada();
 	void escriuTauler(const string& nomFitxer);
 	void inicialitzaFigura(const int tipusFiguraNova);
-	void girarRecta(DireccioGir direccio);
-	void desGirarRecta(DireccioGir direccio);
 };
 
 #endif

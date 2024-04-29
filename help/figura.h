@@ -23,7 +23,6 @@ public:
     void trasposarMatriu();
     void girHorari();
     void antiHorari();
-    void trasposarFiguraLinea();
     void intercambiaFiles();
     void intercambiaColumnes();
     void inicialitzaArray() { for (int i = 0; i < TAMANY_MES_GRAN; i++) { m_arrayfiguras[i] = 0; } };
