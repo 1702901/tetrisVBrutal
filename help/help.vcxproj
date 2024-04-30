@@ -130,7 +130,7 @@
     <ClCompile Include="figura.cpp" />
     <ClCompile Include="funcionAuxiliars.cpp" />
     <ClCompile Include="Joc.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="Tauler.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>

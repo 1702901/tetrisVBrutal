@@ -1,5 +1,39 @@
 #include "Joc.h"
 
+Joc::Joc()
+{
+	// genera numeros random 
+	// https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
+	srand((unsigned)time(0));
+	int randomNumber;
+	randomNumber = (rand() % 6) + 1;
+	m_figura.cambiaFigura(randomNumber);
+	m_figura.setX(COLUMNESATAULER / 2);
+	m_figura.setY(COLUMNESATAULER / 2);
+	posarFigura();
+	fiPartida = false;
+}
+// regenera la figura amb les mateixe coordenades x pero posa la y = 0 per possarla assobre
+void Joc::novaFigura()
+{
+	srand((unsigned)time(0));
+	int randomNumber;
+	randomNumber = (rand() % 6) + 1;
+	int lenghLine = m_figura.getLenghLine();
+	m_figura.cambiaFigura(randomNumber);
+	m_figura.setY(0);
+	if (m_figura.getX() < 0)
+		m_figura.setX(0);
+	else
+	{
+		// posiciona la figura fins que no es surti del tauler
+		while (m_figura.getLenghLine() + m_figura.getX() > COLUMNESATAULER)
+			m_figura.setX(m_figura.getX() - 1);
+	}
+	fiPartida = mirarSiHaColisionsFigura();
+	posarFigura();
+}
+
 int posCentroAEsquinaY(int pos)
 {
 	pos -= 1;
@@ -227,6 +261,7 @@ int Joc::baixaFigura()
 		m_figura.setY(m_figura.getY() - 1);
 		posarFigura();
 		filesEliminades = eliminarLineasCompletesBaixada();
+		novaFigura();
 	}
 	// Part on hem de mirar si hem de eliminar una linea o lineas etc
 	else

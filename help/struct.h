@@ -5,6 +5,12 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <cstdlib> 
+#include <fstream>
+#include <conio.h>
+#include <chrono>
+#include <ctime>
+
 using namespace std;
 
 const int COLUMNESATAULER = 8;

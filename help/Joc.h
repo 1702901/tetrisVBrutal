@@ -7,7 +7,10 @@ class Joc
 private:
 	Tauler m_tauler;
 	Figuras m_figura;
+	bool fiPartida;
 public:
+	Joc();
+	void novaFigura();
 	void inicialitza(const string& nomFitxer);
 	void mostrarTualer();
 	void mostrarFigura();
@@ -20,6 +23,7 @@ public:
 	int eliminarLineasCompletesBaixada();
 	void escriuTauler(const string& nomFitxer);
 	void inicialitzaFigura(const int tipusFiguraNova);
+	bool getFiPartida()  const { return fiPartida; };
 };
 
 #endif

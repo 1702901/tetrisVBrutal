@@ -15,3 +15,15 @@ ostream& operator<<(ostream& out, const Tauler& partida)
 	}
 	return out;
 }
+
+Tauler::Tauler()
+{
+	for (int j = 0; j < FILESTAULER; j++)
+	{
+		for(int i = 0; i < COLUMNESATAULER; i++)
+		{
+			taulerJoc[j][i] = COLOR_NEGRE;
+		}
+	}
+	ordreGirs = 0;
+}

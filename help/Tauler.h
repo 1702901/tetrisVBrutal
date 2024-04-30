@@ -7,6 +7,7 @@ private:
 	ColorFigura taulerJoc[COLUMNESATAULER][FILESTAULER];
 	int ordreGirs;
 public:
+	Tauler();
 	void setPosition(const int posX, const int posY, const ColorFigura valueColor) { taulerJoc[posX][posY] = valueColor; };
     int getPosition(const int posX, const int posY) const { return int(taulerJoc[posY][posX]) ; };
 };
