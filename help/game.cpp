@@ -18,6 +18,7 @@ int main()
 	// COMIENZA EL CODIGO DEL JUEGO
 	char tecla;
 	Joc tetris;
+	tetris.mostrarTualer();
 	while (!tetris.getFiPartida())
 	{
 		now = std::chrono::high_resolution_clock::now();

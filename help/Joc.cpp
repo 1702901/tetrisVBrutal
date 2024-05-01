@@ -31,7 +31,8 @@ void Joc::novaFigura()
 			m_figura.setX(m_figura.getX() - 1);
 	}
 	fiPartida = mirarSiHaColisionsFigura();
-	posarFigura();
+	if(!fiPartida)
+		posarFigura();
 }
 
 int posCentroAEsquinaY(int pos)
