@@ -4,7 +4,7 @@
 class Tauler
 {
 private:
-	ColorFigura taulerJoc[FILESTAULER][COLUMNESATAULER];
+	ColorFigura taulerJoc[COLUMNESATAULER][FILESTAULER];
 	int ordreGirs;
 public:
 	Tauler();

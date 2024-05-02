@@ -5,10 +5,10 @@ ostream& operator<<(ostream& out, const Tauler& partida)
 	string lineaMostrar;
 	int colum = 0;
 	int y;
-	for (int x = 0; x < COLUMNESATAULER; x++)
+	for (int x = 0; x < FILESTAULER; x++)
 	{
 		lineaMostrar = "[";
-		for (y = 0; y < FILESTAULER - 1; y++) 
+		for (y = 0; y < COLUMNESATAULER - 1; y++)
 		{
 			if(partida.getPosition(x, y) == COLOR_NEGRE)
 				lineaMostrar = lineaMostrar + "  ";
@@ -28,9 +28,9 @@ ostream& operator<<(ostream& out, const Tauler& partida)
 
 Tauler::Tauler()
 {
-	for (int j = 0; j < FILESTAULER; j++)
+	for (int j = 0; j < COLUMNESATAULER ; j++)
 	{
-		for(int i = 0; i < COLUMNESATAULER; i++)
+		for(int i = 0; i < FILESTAULER; i++)
 		{
 			taulerJoc[j][i] = COLOR_NEGRE;
 		}

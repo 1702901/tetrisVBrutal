@@ -8,8 +8,8 @@ Joc::Joc()
 	int randomNumber;
 	randomNumber = (rand() % 6) + 1;
 	m_figura.cambiaFigura(randomNumber);
-	m_figura.setX(FILESTAULER / 2);
-	m_figura.setY(COLUMNESATAULER / 2);
+	m_figura.setX(COLUMNESATAULER / 2);
+	m_figura.setY(FILESTAULER / 2);
 	posarFigura();
 	fiPartida = false;
 }
@@ -27,7 +27,7 @@ void Joc::novaFigura()
 	else
 	{
 		// posiciona la figura fins que no es surti del tauler
-		while (m_figura.getLenghLine() + m_figura.getX() > FILESTAULER)
+		while (m_figura.getLenghLine() + m_figura.getX() > COLUMNESATAULER)
 			m_figura.setX(m_figura.getX() - 1);
 
 	}
@@ -80,9 +80,9 @@ void Joc::inicialitza(const string& nomFitxer)
 		m_figura.setX(posCentroAEsquinaX(posX, m_figura.getTamany(), cuantitatDeGirsHoraris));
 		for (int i = 0; i < cuantitatDeGirsHoraris; i++)
 			m_figura.girHorari();
-		for (int y = 0; y < COLUMNESATAULER; y++)
+		for (int y = 0; y < FILESTAULER; y++)
 		{
-			for (int x = 0; x < FILESTAULER; x++)
+			for (int x = 0; x < COLUMNESATAULER; x++)
 			{
 				fitxer >> value;
 				color = ColorFigura(value);
@@ -147,7 +147,7 @@ bool Joc::mirarSiHaColisionsFigura()
 		while (!colisio && columna < m_figura.getY() + m_figura.getLenghLine())
 		{
 			colorDeLaPos = ColorFigura(m_figura.getValuePos(fila - m_figura.getX(), columna - m_figura.getY()));
-			if ((columna >= COLUMNESATAULER || fila >= FILESTAULER) && colorDeLaPos != COLOR_NEGRE)
+			if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
 				colisio = true;
 			
             else
@@ -221,13 +221,13 @@ int Joc::eliminarLineasCompletesBaixada()
 	fila = m_figura.getY();
 	if (fila < 0)
 		fila = 0;
-	if (maxValueLine > MAX_COL)
-		maxValueLine = MAX_COL;
+	if (maxValueLine > MAX_FILA)
+		maxValueLine = MAX_FILA;
 	for(fila;fila < maxValueLine; fila++)
 	{
 		lineCompleta = true;
 		columna = 0;
-		while (lineCompleta && columna < FILESTAULER )
+		while (lineCompleta && columna < COLUMNESATAULER)
 		{
 			if (m_tauler.getPosition(fila, columna) == COLOR_NEGRE )
 				lineCompleta = false;
@@ -240,12 +240,12 @@ int Joc::eliminarLineasCompletesBaixada()
 			// dades de la fila que volem eliminar
 			for (int filaEliminar = fila; filaEliminar > 0; filaEliminar--)
 			{
-				for (int columnasEliminar = 0; columnasEliminar < FILESTAULER; columnasEliminar++)
+				for (int columnasEliminar = 0; columnasEliminar < COLUMNESATAULER; columnasEliminar++)
 					// filaEliminar - 1 per cargar el valor de la fila de sobre
 					m_tauler.setPosition(columnasEliminar, filaEliminar, ColorFigura(m_tauler.getPosition(filaEliminar - 1, columnasEliminar)));
 			}
 			// Posem la linea superior en negra 
-			for (int columnasEliminar = 0; columnasEliminar < FILESTAULER; columnasEliminar++)
+			for (int columnasEliminar = 0; columnasEliminar < COLUMNESATAULER; columnasEliminar++)
 				m_tauler.setPosition(columnasEliminar,0 , COLOR_NEGRE);
 			filesEliminades++;
 		}
@@ -312,10 +312,10 @@ void Joc::escriuTauler(const string& nomFitxer)
 		int colum = 0;
 		int y;
 		
-		for (int x = 0; x < COLUMNESATAULER; x++)
+		for (int x = 0; x < FILESTAULER; x++)
 		{
 			lineaMostrar = "";
-			for (y = 0; y < FILESTAULER - 1; y++)
+			for (y = 0; y < COLUMNESATAULER - 1; y++)
 				lineaMostrar = lineaMostrar + to_string(m_tauler.getPosition(x, y)) + " ";
 			lineaMostrar = lineaMostrar + to_string(m_tauler.getPosition(x, y));
 			fitxer << lineaMostrar << endl;
