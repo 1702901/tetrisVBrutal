@@ -8,9 +8,19 @@ ostream& operator<<(ostream& out, const Tauler& partida)
 	for (int x = 0; x < COLUMNESATAULER; x++)
 	{
 		lineaMostrar = "[";
-		for (y = 0; y < FILESTAULER - 1; y++)
-			lineaMostrar = lineaMostrar + to_string(partida.getPosition(x, y)) + ",";
-		lineaMostrar = lineaMostrar + to_string(partida.getPosition(x, y)) + "]";
+		for (y = 0; y < FILESTAULER - 1; y++) 
+		{
+			if(partida.getPosition(x, y) == COLOR_NEGRE)
+				lineaMostrar = lineaMostrar + "  ";
+			else
+				lineaMostrar = lineaMostrar + to_string(partida.getPosition(x, y)) + " ";
+		}
+		if (partida.getPosition(x, y) == COLOR_NEGRE)
+			lineaMostrar = lineaMostrar + "  ";
+		else
+			lineaMostrar = lineaMostrar + to_string(partida.getPosition(x, y)) + " ";
+
+		lineaMostrar = lineaMostrar + "]";
 		out << lineaMostrar << endl;
 	}
 	return out;
