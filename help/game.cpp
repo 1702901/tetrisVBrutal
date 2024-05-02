@@ -10,7 +10,7 @@ int main()
 	chrono::time_point<std::chrono::steady_clock,std::chrono::duration<_int64,std::ratio<1,10000000000>>> now = std::chrono::high_resolution_clock::now();
 	// Convert the time_point to a duration since the epoch in microseconds
 	auto duration = now.time_since_epoch();
-	// Cast the duration to microseconds
+	// Cast the duration to microseconds 
 	auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
 	// Creates microsecondsEnd
 	auto microsecondsEnd = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
@@ -47,6 +47,9 @@ int main()
 					break;
 				case 'd':
 					tetris.mouFigura(+1);
+					break;
+				case 's':
+					tetris.hardDrop();
 					break;
 				default:
 					break;

@@ -24,6 +24,7 @@ public:
 	void escriuTauler(const string& nomFitxer);
 	void inicialitzaFigura(const int tipusFiguraNova);
 	bool getFiPartida()  const { return fiPartida; };
+	int hardDrop();
 };
 
 #endif
