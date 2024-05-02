@@ -127,17 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="enemigo.cpp" />
     <ClCompile Include="figura.cpp" />
     <ClCompile Include="funcionAuxiliars.cpp" />
     <ClCompile Include="Joc.cpp" />
-    <ClCompile Include="game.cpp" />
+    <ClCompile Include="mago.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="DiferentsJocs.cpp" />
+    <ClCompile Include="slime.cpp" />
     <ClCompile Include="Tauler.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="enemigo.h" />
     <ClInclude Include="figura.h" />
     <ClInclude Include="funcionAuxiliar.h" />
+    <ClInclude Include="DiferentsJocs.h" />
     <ClInclude Include="Joc.h" />
+    <ClInclude Include="mago.h" />
+    <ClInclude Include="slime.h" />
     <ClInclude Include="Tauler.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="struct.h" />

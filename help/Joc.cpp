@@ -69,7 +69,7 @@ void Joc::inicialitza(const string& nomFitxer)
 	int value;
 	fitxer.open(nomFitxer);
 	int tipusFigura, posX, posY, cuantitatDeGirsHoraris;
-	// Columnes Y// Files X
+	// Columnes X // Files Y
 	if (fitxer.is_open())
 	{
 		fitxer >> tipusFigura >> posY >> posX >> cuantitatDeGirsHoraris;

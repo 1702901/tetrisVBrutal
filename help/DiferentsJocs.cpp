@@ -1,13 +1,9 @@
-#include "Joc.h"
+#include "DiferentsJocs.h"
 
-using namespace std;
-
-
-int main()
+void tetris()
 {
-
 	// Get the current time as a time_point
-	chrono::time_point<std::chrono::steady_clock,std::chrono::duration<_int64,std::ratio<1,10000000000>>> now = std::chrono::high_resolution_clock::now();
+	chrono::time_point<std::chrono::steady_clock, std::chrono::duration<_int64, std::ratio<1, 10000000000>>> now = std::chrono::high_resolution_clock::now();
 	// Convert the time_point to a duration since the epoch in microseconds
 	auto duration = now.time_since_epoch();
 	// Cast the duration to microseconds 
@@ -79,11 +75,15 @@ int main()
 	// kbhit hace que no entre a menos que se presione una tecla
 		if (_kbhit())
 		{
-			// aqui se guarda el valor pulsado 
+			// aqui se guarda el valor pulsado
 			tecla = _getch();
 			cout << tecla << endl;
 		}
 	*/
+}
 
-	
+
+void towerTetris()
+{
+
 }

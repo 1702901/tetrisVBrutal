@@ -28,6 +28,21 @@
     <Filter Include="Archivos de recursos\joc">
       <UniqueIdentifier>{e873f527-afc6-4f5d-9ba1-1c75047050e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de recursos\JOCS">
+      <UniqueIdentifier>{685b12eb-1eb9-4ac8-a3a8-7c7d3027598e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\TowerDefense">
+      <UniqueIdentifier>{b6433ba1-eb5b-48f8-a6ca-5e97457198bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\TowerDefense\mago">
+      <UniqueIdentifier>{d846f1ca-e6a4-45f8-bdf6-567298551047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\TowerDefense\enemigo">
+      <UniqueIdentifier>{5eb351df-b303-48d9-a3c5-da3367c4f4eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\TowerDefense\slime">
+      <UniqueIdentifier>{1103028c-243d-4312-9dad-c2586d7c494a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -45,8 +60,20 @@
     <ClCompile Include="Joc.cpp">
       <Filter>Archivos de recursos\joc</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="DiferentsJocs.cpp">
+      <Filter>Archivos de recursos\JOCS</Filter>
+    </ClCompile>
+    <ClCompile Include="mago.cpp">
+      <Filter>Archivos de recursos\TowerDefense\mago</Filter>
+    </ClCompile>
+    <ClCompile Include="enemigo.cpp">
+      <Filter>Archivos de recursos\TowerDefense\enemigo</Filter>
+    </ClCompile>
+    <ClCompile Include="slime.cpp">
+      <Filter>Archivos de recursos\TowerDefense\slime</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +94,18 @@
     </ClInclude>
     <ClInclude Include="Joc.h">
       <Filter>Archivos de recursos\joc</Filter>
+    </ClInclude>
+    <ClInclude Include="DiferentsJocs.h">
+      <Filter>Archivos de recursos\JOCS</Filter>
+    </ClInclude>
+    <ClInclude Include="mago.h">
+      <Filter>Archivos de recursos\TowerDefense\mago</Filter>
+    </ClInclude>
+    <ClInclude Include="enemigo.h">
+      <Filter>Archivos de recursos\TowerDefense\enemigo</Filter>
+    </ClInclude>
+    <ClInclude Include="slime.h">
+      <Filter>Archivos de recursos\TowerDefense\slime</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

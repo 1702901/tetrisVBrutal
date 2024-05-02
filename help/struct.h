@@ -19,7 +19,7 @@ const int DIMENSIONS = 2;
 const int MAX_FILA = FILESTAULER ;
 const int MAX_COL = COLUMNESATAULER;
 const int MAX_GIRS = 3;
-
+const int MAX_VIDA_MAGO = 3;
 
 typedef enum
 {
@@ -52,7 +52,8 @@ typedef enum
     COLOR_BLAUFOSC,
     COLOR_VERD,
     COLOR_VERMELL,
-    NO_COLOR
+    NO_COLOR,
+    SLIME
 } ColorFigura;
 
 typedef enum
