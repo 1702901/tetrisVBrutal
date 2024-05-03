@@ -5,8 +5,5 @@ using namespace std;
 
 int main()
 {
-	//tetris();
-	
-
-	
+	tetris();
 }

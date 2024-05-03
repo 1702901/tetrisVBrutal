@@ -278,24 +278,14 @@ int Joc::baixaFigura()
 }
 int Joc::hardDrop()
 {
-	bool colisions = false;
 	int filesEliminades = 0;
-	while (!colisions)
-	{
-		borrarFigura();
+	borrarFigura();
+	while (!mirarSiHaColisionsFigura())
 		m_figura.setY(m_figura.getY() + 1);
-		colisions = mirarSiHaColisionsFigura();
-		if (colisions)
-		{
-			m_figura.setY(m_figura.getY() - 1);
-			posarFigura();
-			filesEliminades = eliminarLineasCompletesBaixada();
-			novaFigura();
-		}
-		// Part on hem de mirar si hem de eliminar una linea o lineas etc
-		else
-			posarFigura();
-	}
+	m_figura.setY(m_figura.getY() - 1);
+	posarFigura();
+	filesEliminades = eliminarLineasCompletesBaixada();
+	novaFigura();
 	return filesEliminades;
 }
 
