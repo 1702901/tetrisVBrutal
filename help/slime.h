@@ -4,14 +4,13 @@
 class slime
 {
 private:
-	enemigo caracteristicas;
+	enemigo m_caracteristicas;
+	Figuras m_representacionTablero;
 public:
-	slime() { caracteristicas.setY(0); caracteristicas.setX(COLUMNESATAULER-1); };
+	slime() { m_representacionTablero.setY(FILESTAULER - 1); m_representacionTablero.setX(COLUMNESATAULER - 1); };
 	ColorFigura getColorValue() const { return SLIME; }
-	int getX() const { return caracteristicas.getX(); };
-	int getY() const { return caracteristicas.getY(); };
-	void moverSlime() { caracteristicas.moverMonstreEndevant(); };
-	void desMoverSlime() { caracteristicas.moverMonstreAtras(); };
+	int getX() const { return m_representacionTablero.getX(); };
+	int getY() const { return m_representacionTablero.getY(); };
 };
 
 

@@ -135,6 +135,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="DiferentsJocs.cpp" />
     <ClCompile Include="slime.cpp" />
+    <ClCompile Include="JocTower.cpp" />
     <ClCompile Include="Tauler.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <ClInclude Include="figura.h" />
     <ClInclude Include="funcionAuxiliar.h" />
     <ClInclude Include="DiferentsJocs.h" />
+    <ClInclude Include="JocTower.h" />
     <ClInclude Include="Joc.h" />
     <ClInclude Include="mago.h" />
     <ClInclude Include="slime.h" />
