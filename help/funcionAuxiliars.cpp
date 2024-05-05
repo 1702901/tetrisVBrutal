@@ -82,10 +82,10 @@ void arrayToFigure(int tipusFigura, int array[],int& tamany, const int color, in
         tamany = 16;
         for (int i = 0; i < tamany; i++)
             array[i] = 0;
-        array[4] = color; 
-        array[5] = color; 
+        array[2] = color; 
         array[6] = color; 
-        array[7] = color; 
+        array[10] = color; 
+        array[14] = color; 
         lenghLine = 4;
         break;
     default:

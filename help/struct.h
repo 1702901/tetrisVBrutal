@@ -14,7 +14,7 @@
 using namespace std;
 
 const int COLUMNESATAULER = 8;
-const int FILESTAULER = 10;
+const int FILESTAULER = 16;
 const int DIMENSIONS = 2;
 const int MAX_FILA = FILESTAULER ;
 const int MAX_COL = COLUMNESATAULER;

@@ -20,7 +20,9 @@ void tetris()
 		now = std::chrono::high_resolution_clock::now();
 		duration = now.time_since_epoch();
 		microseconds = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
-		while (microsecondsEnd - microseconds < 1000000)
+		// 1000000 == 1 segundo
+		int timeToGoDown = 1000000;
+		while (microsecondsEnd - microseconds < timeToGoDown)
 		{
 			now = std::chrono::high_resolution_clock::now();
 			duration = now.time_since_epoch();
@@ -53,6 +55,7 @@ void tetris()
 				system("cls");
 				tetris.mostrarTualer();
 			}
+
 		}
 		tetris.baixaFigura();
 		system("cls");

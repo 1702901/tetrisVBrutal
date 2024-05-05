@@ -29,9 +29,7 @@ void Joc::novaFigura()
 		// posiciona la figura fins que no es surti del tauler
 		while (m_figura.getLenghLine() + m_figura.getX() > COLUMNESATAULER)
 			m_figura.setX(m_figura.getX() - 1);
-
 	}
-
 
 	fiPartida = mirarSiHaColisionsFigura();
 
@@ -280,9 +278,12 @@ int Joc::hardDrop()
 {
 	int filesEliminades = 0;
 	borrarFigura();
+	// baixa la figura fins que doni colisio
 	while (!mirarSiHaColisionsFigura())
 		m_figura.setY(m_figura.getY() + 1);
+	// desfa el moviment que causa la colisio 
 	m_figura.setY(m_figura.getY() - 1);
+	// posa la figura on no fa colisio i fa el procediment vist a baixaFigura
 	posarFigura();
 	filesEliminades = eliminarLineasCompletesBaixada();
 	novaFigura();
@@ -297,11 +298,9 @@ void Joc::escriuTauler(const string& nomFitxer)
 	// Columnes Y// Files X
 	if (fitxer.is_open())
 	{
-		
 		string lineaMostrar;
 		int colum = 0;
 		int y;
-		
 		for (int x = 0; x < FILESTAULER; x++)
 		{
 			lineaMostrar = "";
