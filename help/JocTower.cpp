@@ -74,7 +74,60 @@ void JocTower::posarFigura()
 	}
 }
 
+void JocTower::posarFiguraHardDrop()
+{
+	for (int fila = m_figura.getY(); fila < m_figura.getY() + m_figura.getLenghLine(); fila++)
+	{
+		for (int columna = m_figura.getX(); columna < m_figura.getX() + m_figura.getLenghLine(); columna++)
+		{
+			
+			if (ColorFigura(m_figura.getValuePos(columna - m_figura.getX(), fila - m_figura.getY())) != COLOR_NEGRE)
+			{
+				// > perque aixi tot monstre eliminara una part de la figura al caura 
+				if (ColorFigura(m_tauler.getPosition(fila, columna) > COLOR_NEGRE))
+					m_figura.setValuePos0(columna, fila);
+				else
+					m_tauler.setPosition(columna, fila, ColorFigura(m_figura.getColor()));
+			}
+		}
+	}
+}
+
+
 bool JocTower::mirarSiHaColisionsFigura()
+{
+	bool colisio = false;
+	int fila = m_figura.getX(), columna = m_figura.getY();
+	ColorFigura colorDeLaPos;
+	while (!colisio && fila < m_figura.getX() + m_figura.getLenghLine())
+	{
+		while (!colisio && columna < m_figura.getY() + m_figura.getLenghLine())
+		{
+			colorDeLaPos = ColorFigura(m_figura.getValuePos(fila - m_figura.getX(), columna - m_figura.getY()));
+			if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
+				colisio = true;
+
+			else
+			{
+				// != perque tots els superiors son elements no eliminables ( slimes i demes, mirar srtuct per aixo ) ya  que nomes se eliminen quan 
+				// es el moviment de baixada
+				if (colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != COLOR_NEGRE) 
+					colisio = true;
+				else
+				{
+					if ((columna < 0 || fila < 0) && colorDeLaPos != COLOR_NEGRE)
+						colisio = true;
+				}
+			}
+			columna++;
+		}
+		fila++;
+		columna = m_figura.getY();
+	}
+	return colisio;
+}
+
+bool JocTower::mirarSiHaColisionsFiguraBaixada()
 {
 
 	bool colisio = false;
@@ -90,7 +143,8 @@ bool JocTower::mirarSiHaColisionsFigura()
 
 			else
 			{
-				if (colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != COLOR_NEGRE)
+				// perque tots els elements que surtin de l'interval es poden eliminar de baixasa
+				if (colorDeLaPos != COLOR_NEGRE && ( m_tauler.getPosition(columna, fila) > COLOR_NEGRE ) && (m_tauler.getPosition(columna, fila) < SLIME))
 					colisio = true;
 				else
 				{
@@ -199,7 +253,7 @@ int JocTower::baixaFigura()
 	int filesEliminades = 0;
 	borrarFigura();
 	m_figura.setY(m_figura.getY() + 1);
-	colisions = mirarSiHaColisionsFigura();
+	colisions = mirarSiHaColisionsFiguraBaixada();
 	if (colisions)
 	{
 		m_figura.setY(m_figura.getY() - 1);
@@ -220,11 +274,11 @@ int JocTower::hardDrop()
 	borrarFigura();
 	// baixa la figura fins que doni colisio
 	while (!mirarSiHaColisionsFigura())
-		m_figura.setY(m_figura.getY() + 1);
+		m_figura.setY(m_figura.getY() + 1); 
 	// desfa el moviment que causa la colisio 
 	m_figura.setY(m_figura.getY() - 1);
 	// posa la figura on no fa colisio i fa el procediment vist a baixaFigura
-	posarFigura();
+	posarFigura(); 
 	filesEliminades = eliminarLineasCompletesBaixada();
 	novaFigura();
 	return filesEliminades;
@@ -258,4 +312,43 @@ void JocTower::escriuTauler(const string& nomFitxer)
 void JocTower::inicialitzaFigura(const int tipusFiguraNova)
 {
 	m_figura.cambiaFigura(tipusFiguraNova);
+}
+
+void JocTower::inicialitzaSlime(Slime& slimeABorrar)
+{
+	slimeABorrar.inicialitza();
+}
+void JocTower::borrarSlime(Slime& slimeABorrar)
+{
+	m_tauler.setPosition(slimeABorrar.getX(), slimeABorrar.getY(), COLOR_NEGRE);
+}
+void JocTower::posarSlime(Slime& slimeAPossar)
+{
+	m_tauler.setPosition(slimeAPossar.getX(), slimeAPossar.getY(), SLIME);
+}
+
+bool JocTower::mirarSiHaColisionsSlime()
+{
+	bool colisio = false;
+	int fila = m_figura.getX(), columna = m_figura.getY();
+	if (columna >= FILESTAULER || fila >= COLUMNESATAULER || columna < 0 || fila < 0)
+		colisio = true;
+	else
+	{
+		if (m_tauler.getPosition(columna, fila) != COLOR_NEGRE)
+			colisio = true;
+	}
+	return colisio;
+};
+
+bool JocTower::mouSlime(int dirX, Slime& slimeAMoure)
+{
+	bool colisions;
+	borrarSlime(slimeAMoure);
+	slimeAMoure.setX(slimeAMoure.getX() + dirX);
+	colisions = mirarSiHaColisionsSlime();
+	if (colisions)
+		slimeAMoure.setX(slimeAMoure.getX() - dirX);
+	posarSlime(slimeAMoure);
+	return !colisions;
 }

@@ -20,6 +20,7 @@ const int MAX_FILA = FILESTAULER ;
 const int MAX_COL = COLUMNESATAULER;
 const int MAX_GIRS = 3;
 const int MAX_VIDA_MAGO = 3;
+const int MAX_SLIMES = 5;
 
 typedef enum
 {
@@ -44,7 +45,7 @@ typedef enum
 // Color negre = posicio vuida
 typedef enum
 {
-    COLOR_NEGRE = 0,
+    COLOR_NEGRE,
     COLOR_BLAUCEL,
     COLOR_GROC,
     COLOR_MAGENTA,
@@ -52,7 +53,6 @@ typedef enum
     COLOR_BLAUFOSC,
     COLOR_VERD,
     COLOR_VERMELL,
-    NO_COLOR,
     SLIME
 } ColorFigura;
 
