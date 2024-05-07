@@ -21,6 +21,7 @@ const int MAX_COL = COLUMNESATAULER;
 const int MAX_GIRS = 3;
 const int MAX_VIDA_MAGO = 3;
 const int MAX_SLIMES = 5;
+const int TAMANY_SLIME = 1;
 
 typedef enum
 {

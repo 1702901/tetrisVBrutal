@@ -142,9 +142,9 @@ void towerTetris()
 				system("cls");
 				tetris.mostrarTualer();
 			}
-
 		}
 		tetris.baixaFigura();
+		tetris.mouSlime(-1,tetris.donaSlime(1));
 		system("cls");
 		tetris.mostrarTualer();
 		// despres de esperar les tecles baixa la figura

@@ -12,6 +12,7 @@ JocTower::JocTower()
 	m_figura.setY(FILESTAULER / 2);
 	posarFigura();
 	fiPartida = false;
+	vida = MAX_VIDA_MAGO;
 }
 // regenera la figura amb les mateixe coordenades x pero posa la y = 0 per possarla assobre
 void JocTower::novaFigura()
@@ -271,10 +272,14 @@ int JocTower::baixaFigura()
 int JocTower::hardDrop()
 {
 	int filesEliminades = 0;
-	borrarFigura();
 	// baixa la figura fins que doni colisio
-	while (!mirarSiHaColisionsFigura())
-		m_figura.setY(m_figura.getY() + 1); 
+	borrarFigura();
+	while (!mirarSiHaColisionsFiguraBaixada())
+	{
+		posarFigura();
+		borrarFigura();
+		m_figura.setY(m_figura.getY() + 1);
+	}
 	// desfa el moviment que causa la colisio 
 	m_figura.setY(m_figura.getY() - 1);
 	// posa la figura on no fa colisio i fa el procediment vist a baixaFigura
@@ -327,28 +332,64 @@ void JocTower::posarSlime(Slime& slimeAPossar)
 	m_tauler.setPosition(slimeAPossar.getX(), slimeAPossar.getY(), SLIME);
 }
 
-bool JocTower::mirarSiHaColisionsSlime()
+bool JocTower::mirarSiHaColisionsSlime(Slime& slimeAMoure)
 {
 	bool colisio = false;
-	int fila = m_figura.getX(), columna = m_figura.getY();
-	if (columna >= FILESTAULER || fila >= COLUMNESATAULER || columna < 0 || fila < 0)
-		colisio = true;
-	else
+	int fila = slimeAMoure.getX(), columna = slimeAMoure.getY();
+	ColorFigura colorDeLaPos;
+	while (!colisio && fila < slimeAMoure.getX() + TAMANY_SLIME)
 	{
-		if (m_tauler.getPosition(columna, fila) != COLOR_NEGRE)
-			colisio = true;
+		while (!colisio && columna < m_figura.getY() + TAMANY_SLIME)
+		{
+			colorDeLaPos = ColorFigura(slimeAMoure.getValuePos());
+			if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
+				colisio = true;
+			else
+			{
+				// != perque tots els superiors son elements no eliminables ( slimes i demes, mirar srtuct per aixo ) ya  que nomes se eliminen quan 
+				// es el moviment de baixada
+				if (colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != SLIME)
+					colisio = true;
+				else
+				{
+					if ((columna < 0 || fila < 0) && colorDeLaPos != COLOR_NEGRE)
+						colisio = true;
+				}
+			}
+			columna++;
+		}
+		fila++;
+		columna = slimeAMoure.getY();
 	}
 	return colisio;
 };
 
 bool JocTower::mouSlime(int dirX, Slime& slimeAMoure)
 {
-	bool colisions;
-	borrarSlime(slimeAMoure);
-	slimeAMoure.setX(slimeAMoure.getX() + dirX);
-	colisions = mirarSiHaColisionsSlime();
+	bool colisions = mirarSiHaColisionsSlime(slimeAMoure);
 	if (colisions)
-		slimeAMoure.setX(slimeAMoure.getX() - dirX);
-	posarSlime(slimeAMoure);
+	{
+		slimeAMoure.inicialitza();
+		posarSlime(slimeAMoure);
+	}
+	else
+	{
+		borrarSlime(slimeAMoure);
+		if (slimeAMoure.getX() + dirX < 0)
+		{
+			slimeAMoure.setX(COLUMNESATAULER - 1);
+			vida--;
+			if (vida == 0)
+			{
+				fiPartida = true;
+			}
+		}
+		else
+		{
+			slimeAMoure.setX(slimeAMoure.getX() + dirX);
+		}
+		posarSlime(slimeAMoure);
+	}
+	
 	return !colisions;
 }

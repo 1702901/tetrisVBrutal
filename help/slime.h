@@ -14,6 +14,7 @@ public:
 	int getY() const { return m_representacionTablero.getY(); };
 	void setX(const int x) { m_representacionTablero.setX(x); };
 	void setY(const int y) { m_representacionTablero.setY(y); };
+	int getValuePos() const { return int(SLIME); };
 
 
 };

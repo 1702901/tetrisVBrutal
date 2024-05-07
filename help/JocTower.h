@@ -10,6 +10,7 @@ private:
 	Figuras m_figura;
 	bool fiPartida;
 	Slime slimes[MAX_SLIMES];
+	int vida; 
 public:
 	JocTower();
 	void novaFigura();
@@ -29,9 +30,10 @@ public:
 	void inicialitzaSlime(Slime& slimeABorrar);
 	void borrarSlime(Slime& slimeABorrar);
 	void posarSlime(Slime& slimeAPossar);
-	bool mirarSiHaColisionsSlime();
+	bool mirarSiHaColisionsSlime(Slime& slimeAMoure);
 	bool mouSlime(int dirX, Slime& slimeAMoure);
 	bool getFiPartida()  const { return fiPartida; };
+	Slime& donaSlime(const int slimeIndex)  { return slimes[slimeIndex]; };
 	int hardDrop();
 };
 
