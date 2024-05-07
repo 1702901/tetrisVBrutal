@@ -25,6 +25,7 @@ public:
 	bool mouFigura(int dirX);
 	int baixaFigura();
 	int eliminarLineasCompletesBaixada();
+	int eliminarColumnesCompletesBaixada();
 	void escriuTauler(const string& nomFitxer);
 	void inicialitzaFigura(const int tipusFiguraNova);
 	void inicialitzaSlime(Slime& slimeABorrar);

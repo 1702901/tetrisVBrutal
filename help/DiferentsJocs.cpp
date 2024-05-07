@@ -134,13 +134,18 @@ void towerTetris()
 					tetris.mouFigura(+1);
 					break;
 				case 's':
+					tetris.baixaFigura();// baixo figura un cop per comprovar que no esta fora del mapa, sino es 
+					// podria fer un exlpoit de fer hardDrop sortinse del mapa pero no perdent
 					tetris.hardDrop();
+					for (int i = 0; i < PENALITZACIO; i++)
+						tetris.mouSlime(-1, tetris.donaSlime(1));
 					break;
 				default:
 					break;
 				}
 				system("cls");
 				tetris.mostrarTualer();
+				
 			}
 		}
 		tetris.baixaFigura();

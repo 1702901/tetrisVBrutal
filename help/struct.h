@@ -13,8 +13,8 @@
 
 using namespace std;
 
-const int COLUMNESATAULER = 8;
-const int FILESTAULER = 16;
+const int COLUMNESATAULER = 16;
+const int FILESTAULER = 8;
 const int DIMENSIONS = 2;
 const int MAX_FILA = FILESTAULER ;
 const int MAX_COL = COLUMNESATAULER;
@@ -22,6 +22,7 @@ const int MAX_GIRS = 3;
 const int MAX_VIDA_MAGO = 3;
 const int MAX_SLIMES = 5;
 const int TAMANY_SLIME = 1;
+const int PENALITZACIO = 4;
 
 typedef enum
 {

@@ -19,7 +19,7 @@ void JocTower::novaFigura()
 {
 	srand((unsigned)time(0));
 	int randomNumber;
-	randomNumber = (rand() % 6) + 1;
+	randomNumber = (rand() % 7);
 	int lenghLine = m_figura.getLenghLine();
 	m_figura.cambiaFigura(randomNumber);
 	m_figura.setY(0);
@@ -32,9 +32,13 @@ void JocTower::novaFigura()
 			m_figura.setX(m_figura.getX() - 1);
 	}
 
-	fiPartida = mirarSiHaColisionsFigura();
-
-	if (!fiPartida)
+	if(mirarSiHaColisionsFigura())
+	{
+		// cuando se eliminan columnas se eliminan todos los elementos posteriores a esta 
+		// sino se explotaran las columnas presentes para poder dar hueco a la figura en cuestion
+		eliminarColumnesCompletesBaixada();
+	}
+	else
 		posarFigura();
 }
 
@@ -246,6 +250,55 @@ int JocTower::eliminarLineasCompletesBaixada()
 	return filesEliminades;
 }
 
+int JocTower::eliminarColumnesCompletesBaixada()
+{
+	bool columnaCompleta;
+	int columna, fila;
+	int columnesEliminades = 0;
+	int maxValueColum = m_figura.getX() + m_figura.getLenghLine();
+	// Como valor mas bajo solo comprovamos la linea 0
+	// El caso es que hay figuras que su array puede salir, pero no la figura en si
+	// Por tanto de ahi la existencia de este if
+	columna = m_figura.getX();
+	if (columna < 0)
+		columna = 0;
+	if (maxValueColum > MAX_COL)
+		maxValueColum = MAX_COL;
+
+	for (columna; columna < maxValueColum; columna++)
+	{
+		columnaCompleta = true;
+		fila = 0;
+		while (columnaCompleta && fila < FILESTAULER)
+		{
+			if (m_tauler.getPosition(fila, columna) == COLOR_NEGRE)
+				columnaCompleta = false;
+			fila++;
+		}
+		if (columnaCompleta)
+		{
+			// eliminem desde l'inici de la figura, totes las columnes posteriors
+			for (int columnaAeliminar = m_figura.getX(); columnaAeliminar < MAX_COL; columnaAeliminar++)
+			{
+				for (int filaEliminar = 0; filaEliminar < FILESTAULER; filaEliminar++)
+					// filaEliminar - 1 per cargar el valor de la fila de sobre
+					m_tauler.setPosition(columnaAeliminar, filaEliminar, COLOR_NEGRE);
+				columnesEliminades++;
+			}
+		}
+		else
+		{
+			// eliminem la columna on estem posant la figura per donar espai al jugador
+			for (int filaEliminar = 0; filaEliminar < FILESTAULER; filaEliminar++)
+			{
+				if (m_tauler.getPosition(filaEliminar,columna) != SLIME)
+					m_tauler.setPosition(columna, filaEliminar, COLOR_NEGRE);
+			}
+			columnesEliminades++;
+		}
+	}
+	return columnesEliminades;
+}
 
 int JocTower::baixaFigura()
 {
