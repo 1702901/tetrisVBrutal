@@ -339,7 +339,7 @@ bool JocTower::mirarSiHaColisionsSlime(Slime& slimeAMoure)
 	ColorFigura colorDeLaPos;
 	while (!colisio && fila < slimeAMoure.getX() + TAMANY_SLIME)
 	{
-		while (!colisio && columna < m_figura.getY() + TAMANY_SLIME)
+		while (!colisio && columna < slimeAMoure.getY() + TAMANY_SLIME)
 		{
 			colorDeLaPos = ColorFigura(slimeAMoure.getValuePos());
 			if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
@@ -348,7 +348,7 @@ bool JocTower::mirarSiHaColisionsSlime(Slime& slimeAMoure)
 			{
 				// != perque tots els superiors son elements no eliminables ( slimes i demes, mirar srtuct per aixo ) ya  que nomes se eliminen quan 
 				// es el moviment de baixada
-				if (colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != SLIME)
+				if (m_tauler.getPosition(columna, fila) != SLIME)
 					colisio = true;
 				else
 				{
