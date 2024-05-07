@@ -337,30 +337,18 @@ bool JocTower::mirarSiHaColisionsSlime(Slime& slimeAMoure)
 	bool colisio = false;
 	int fila = slimeAMoure.getX(), columna = slimeAMoure.getY();
 	ColorFigura colorDeLaPos;
-	while (!colisio && fila < slimeAMoure.getX() + TAMANY_SLIME)
+	
+	colorDeLaPos = ColorFigura(slimeAMoure.getValuePos());
+	if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
+		colisio = true;
+	else
 	{
-		while (!colisio && columna < slimeAMoure.getY() + TAMANY_SLIME)
-		{
-			colorDeLaPos = ColorFigura(slimeAMoure.getValuePos());
-			if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
-				colisio = true;
-			else
-			{
-				// != perque tots els superiors son elements no eliminables ( slimes i demes, mirar srtuct per aixo ) ya  que nomes se eliminen quan 
-				// es el moviment de baixada
-				if (m_tauler.getPosition(columna, fila) != SLIME)
-					colisio = true;
-				else
-				{
-					if ((columna < 0 || fila < 0) && colorDeLaPos != COLOR_NEGRE)
-						colisio = true;
-				}
-			}
-			columna++;
-		}
-		fila++;
-		columna = slimeAMoure.getY();
+		// != perque tots els superiors son elements no eliminables ( slimes i demes, mirar srtuct per aixo ) ya  que nomes se eliminen quan 
+		// es el moviment de baixada
+		if (m_tauler.getPosition(columna, fila) != SLIME)
+			colisio = true;
 	}
+	
 	return colisio;
 };
 
@@ -369,6 +357,7 @@ bool JocTower::mouSlime(int dirX, Slime& slimeAMoure)
 	bool colisions = mirarSiHaColisionsSlime(slimeAMoure);
 	if (colisions)
 	{
+		// no borrem perque slime es mort si no es al tauler 
 		slimeAMoure.inicialitza();
 		posarSlime(slimeAMoure);
 	}
@@ -379,16 +368,13 @@ bool JocTower::mouSlime(int dirX, Slime& slimeAMoure)
 		{
 			slimeAMoure.setX(COLUMNESATAULER - 1);
 			vida--;
-			if (vida == 0)
-			{
-				fiPartida = true;
-			}
 		}
 		else
-		{
 			slimeAMoure.setX(slimeAMoure.getX() + dirX);
-		}
-		posarSlime(slimeAMoure);
+		if (vida == 0)
+			fiPartida = true;
+		else 
+			posarSlime(slimeAMoure);
 	}
 	
 	return !colisions;
