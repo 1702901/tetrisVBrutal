@@ -4,12 +4,12 @@
 class Tauler
 {
 private:
-	ColorFigura taulerJoc[COLUMNESATAULER + MAX_SLIMES][FILESTAULER];
+	ColorFigura taulerJoc[COLUMNESATAULER][FILESTAULER];
 	int ordreGirs;
 public:
 	Tauler();
 	void setPosition(const int posX, const int posY, const ColorFigura valueColor) { taulerJoc[posX][posY] = valueColor; };
-    int getPosition(const int posX, const int posY) const { return int(taulerJoc[posY][posX]) ; };
+    int getPosition(const int posY, const int posX) const { return int(taulerJoc[posX][posY]) ; };
 };
 
 ostream& operator<<(ostream& out, const Tauler& partida);
